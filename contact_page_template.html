@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Contact & Chat Test Page</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #334155;
+            --text-light: #94a3b8;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 1.25rem;
+            letter-spacing: -0.05em;
+        }
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: white;
+        }
+        main {
+            flex: 1;
+            max-width: 600px;
+            width: 100%;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .contact-card {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        p.subtitle {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background: #fff;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        button.submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button.submit-btn:hover {
+            background: var(--accent-hover);
+        }
+        /* Simulated Chat Widget Container */
+        .chat-widget-mock {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: inherit;
+        }
+        /* Floating Action Button (FAB) */
+        .chat-fab {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .chat-fab:hover {
+            transform: scale(1.05);
+        }
+        .chat-fab svg {
+            fill: white;
+            width: 28px;
+            height: 28px;
+        }
+        /* Placeholder script notice */
+        .debug-notice {
+            background: #f1f5f9;
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.85rem;
+        }
+        .debug-notice code {
+            background: #e2e8f0;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Acme Corp</div>
+        <nav>
+            <a href="#">Solutions</a>
+            <a href="#">Pricing</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-card">
+            <h1>Contact Support</h1>
+            <p class="subtitle">Submit a ticket or use our live chat down below.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Form submission simulation successful!');">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" placeholder="john@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="dept">Department</label>
+                    <select id="dept">
+                        <ajax>Technical Support</ajax>
+                        <option>Billing & Invoicing</option>
+                        <option>Enterprise Sales</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="msg">Message</label>
+                    <textarea id="msg" rows="4" placeholder="How can our team help you?" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+
+            <div class="debug-notice">
+                <strong>Chat Test Environment:</strong> You can embed your live chat widget scripts right before the closing <code>&lt;/body&gt;</code> tag of this file.
+            </div>
+        </div>
+    </main>
+
+    <!-- Simulated Chat Widget Wrapper -->
+    <div class="chat-widget-mock" id="chatWidgetMock">
+        <div class="chat-fab" onclick="alert('Your chat client script will hook into this trigger area.');">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+            </svg>
+        </div>
+    </div>
+
+</body>
+</html>
